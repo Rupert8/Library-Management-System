@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/library</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">1111</property>
+    <property name="hibernate.hbm2ddl.auto">create-drop</property>
+
+    <mapping class="learn.store.entities.Author"/>
+    <mapping class="learn.store.entities.Book"/>
+    <mapping class="learn.store.entities.Genre"/>
+    <mapping class="learn.store.entities.Lean"/>
+    <mapping class="learn.store.entities.User"/>
+  </session-factory>
+</hibernate-configuration>
