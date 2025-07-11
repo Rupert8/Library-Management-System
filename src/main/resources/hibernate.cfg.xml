@@ -8,7 +8,7 @@
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">1111</property>
-    <property name="hibernate.hbm2ddl.auto">create-drop</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
 
     <mapping class="learn.store.entities.Author"/>
     <mapping class="learn.store.entities.Book"/>

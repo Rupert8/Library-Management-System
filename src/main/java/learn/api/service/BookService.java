@@ -1,8 +1,11 @@
 package learn.api.service;
 
+import learn.api.dto.filters.BookFilter;
 import learn.api.exception.BookNotFoundException;
 import learn.api.dto.BookDto;
 import learn.api.mapper.BookMapper;
+import learn.store.entities.Author;
+import learn.store.entities.Genre;
 import learn.store.repository.BookRepository;
 import learn.store.entities.Book;
 import lombok.RequiredArgsConstructor;
@@ -45,8 +48,26 @@ public class BookService {
 
     }
 
+    public boolean delete(Long id) {
+        if(bookRepository.findById(id).isPresent()){
+            bookRepository.delete(id);
+            return true;
+        }
+
+        return false;
+    }
+
     public List<BookDto> findByName(String name) {
         List<Book> books = bookRepository.findByName(name);
         return bookMapper.toBookDtoList(books);
+    }
+
+    public List<BookDto> findByAuthorAndGenre(Author author, Genre genre) {
+        var filter = BookFilter.builder()
+                .author(author)
+                .genre(genre).build();
+
+        return bookMapper.toBookDtoList(bookRepository
+                .findByAuthorAndGenre(filter));
     }
 }

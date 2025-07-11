@@ -1,6 +1,5 @@
 package learn;
 
-import learn.api.dto.BookDto;
 import learn.api.mapper.BookMapper;
 import learn.api.service.BookService;
 import learn.api.utils.HibernateUtil;
@@ -97,6 +96,22 @@ class CRUDTest {
             bookService.update(1L,bookMapper.toBookDto(book));
 
             session.getTransaction().commit();
+        }catch (RuntimeException e) {
+            e.printStackTrace();
         }
     }
+
+//    @Test
+//    public void testDeleteBook(){
+//        try(var session = HibernateUtil.getSession()){
+//            session.beginTransaction();
+//            var bookMapper = BookMapper.INSTANCE;
+//            var bookRepository = new BookRepository(session);
+//            var bookService = new BookService(bookRepository, bookMapper);
+//
+//            System.out.println(bookService.delete(1L));
+//
+//            session.getTransaction().commit();
+//        }
+//    }
 }
